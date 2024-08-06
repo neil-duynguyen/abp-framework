@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   showPopup = false; // Hiển thị popup
 
   private subscription: Subscription = new Subscription();
+  private fmctoken: string = null;
 
   constructor(private homeService: HomeService, private toastr: ToastrService, private firebaseService: FirebaseService) {}
 
@@ -47,10 +48,11 @@ export class HomeComponent implements OnInit, OnDestroy {
       navigator.serviceWorker.register('/firebase-messaging-sw.js')
         .then((registration) => {
           console.log('Service Worker registered with scope:', registration.scope);
-          return this.firebaseService.getToken();
+          return this.firebaseService.getToken(); 
         })
         .then(token => {
           console.log('FCM Registration Token:', token);
+          this.fmctoken = token;
         })
         .catch(err => {
           console.error('Error retrieving FCM token:', err);
@@ -97,7 +99,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       publishDate: new Date(this.newBook.publishDate).toISOString()
     };
     this.subscription.add(
-      this.homeService.updateBook(this.newBook.id, updatedBook).subscribe(
+      this.homeService.updateBook(this.fmctoken, this.newBook.id, updatedBook).subscribe(
         (response) => {
           console.log('Book updated successfully:', response);
           this.loadBooks();

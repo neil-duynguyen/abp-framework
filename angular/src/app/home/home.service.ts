@@ -24,8 +24,8 @@ export class HomeService {
   }
 
   // Phương thức để gọi API cập nhật thông tin sách
-  updateBook(bookId: string, updatedBook: any): Observable<any> {
-    const url = `${this.apiUrl}/?id=${bookId}`;
+  updateBook(token: string, bookId: string, updatedBook: any): Observable<any> {
+    const url = `${this.apiUrl}/?token=${token}&id=${bookId}`;
     return this.http.put<any>(url, updatedBook);
   }
 

@@ -21,8 +21,8 @@ namespace Acme.BookStore.Controllers
 
         
         [HttpPost]
-        public async Task<BookViewDto> CreateBook ( [FromBody]BookCreateDto bookCreateDto) {
-            return await _bookService.CreateBook(bookCreateDto);
+        public async Task<BookViewDto> CreateBook (string token, [FromBody]BookCreateDto bookCreateDto) {
+            return await _bookService.CreateBook(token, bookCreateDto);
         }
 
         [AllowAnonymous]
@@ -37,9 +37,9 @@ namespace Acme.BookStore.Controllers
         }
         
         [HttpPut]
-        public async Task<BookViewDto> UpdateBook(Guid id, BookUpdateDto bookUpdateDto)
+        public async Task<BookViewDto> UpdateBook(string token, Guid id, BookUpdateDto bookUpdateDto)
         {
-            return await _bookService.UpdateBook(id, bookUpdateDto);
+            return await _bookService.UpdateBook(token, id, bookUpdateDto);
         }
 
 

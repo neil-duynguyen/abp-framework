@@ -30,9 +30,12 @@ namespace Acme.BookStore
             _mapper = mapper;
         }
 
-        public async Task<BookViewDto> CreateBook(BookCreateDto bookCreateDto)
+        public async Task<BookViewDto> CreateBook(string token, BookCreateDto bookCreateDto)
         {
             var insert = await _bookRepository.InsertAsync(_mapper.Map<Book>(bookCreateDto));
+
+            //send noti
+            SendNoti(token, "Create Book", "Create Book Successfully");
 
             return ObjectMapper.Map<Book, BookViewDto>(insert);
         }
@@ -42,9 +45,12 @@ namespace Acme.BookStore
             return ObjectMapper.Map<List<Book>, List<BookViewDto>>(await _bookRepository.GetListAsync());
         }
 
-        public async Task<BookViewDto> UpdateBook(Guid id, BookUpdateDto bookUpdateDto)
+        public async Task<BookViewDto> UpdateBook(string token, Guid id, BookUpdateDto bookUpdateDto)
         {
             var book = _mapper.Map(bookUpdateDto, await _bookRepository.FindAsync(id));
+
+            //send noti
+            SendNoti(token, "Update Book", "Update Book Successfully");
 
             return _mapper.Map<BookViewDto>(await _bookRepository.UpdateAsync(book));
         }
