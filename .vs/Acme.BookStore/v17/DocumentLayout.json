@@ -1,0 +1,133 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\New folder\\Acme.BookStore\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{2E19BC05-F78C-4907-A059-C29A4859ADB4}|Acme.BookStore\\Acme.BookStore.csproj|d:\\new folder\\acme.bookstore\\acme.bookstore\\components\\pages\\index.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2E19BC05-F78C-4907-A059-C29A4859ADB4}|Acme.BookStore\\Acme.BookStore.csproj|solutionrelative:acme.bookstore\\components\\pages\\index.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E19BC05-F78C-4907-A059-C29A4859ADB4}|Acme.BookStore\\Acme.BookStore.csproj|d:\\new folder\\acme.bookstore\\acme.bookstore\\services\\bookservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E19BC05-F78C-4907-A059-C29A4859ADB4}|Acme.BookStore\\Acme.BookStore.csproj|solutionrelative:acme.bookstore\\services\\bookservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E19BC05-F78C-4907-A059-C29A4859ADB4}|Acme.BookStore\\Acme.BookStore.csproj|d:\\new folder\\acme.bookstore\\acme.bookstore\\entities\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E19BC05-F78C-4907-A059-C29A4859ADB4}|Acme.BookStore\\Acme.BookStore.csproj|solutionrelative:acme.bookstore\\entities\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E19BC05-F78C-4907-A059-C29A4859ADB4}|Acme.BookStore\\Acme.BookStore.csproj|d:\\new folder\\acme.bookstore\\acme.bookstore\\services\\bookstoreappservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E19BC05-F78C-4907-A059-C29A4859ADB4}|Acme.BookStore\\Acme.BookStore.csproj|solutionrelative:acme.bookstore\\services\\bookstoreappservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E19BC05-F78C-4907-A059-C29A4859ADB4}|Acme.BookStore\\Acme.BookStore.csproj|d:\\new folder\\acme.bookstore\\acme.bookstore\\services\\dtos\\bookviewdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E19BC05-F78C-4907-A059-C29A4859ADB4}|Acme.BookStore\\Acme.BookStore.csproj|solutionrelative:acme.bookstore\\services\\dtos\\bookviewdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E19BC05-F78C-4907-A059-C29A4859ADB4}|Acme.BookStore\\Acme.BookStore.csproj|d:\\new folder\\acme.bookstore\\acme.bookstore\\services\\dtos\\bookupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E19BC05-F78C-4907-A059-C29A4859ADB4}|Acme.BookStore\\Acme.BookStore.csproj|solutionrelative:acme.bookstore\\services\\dtos\\bookupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E19BC05-F78C-4907-A059-C29A4859ADB4}|Acme.BookStore\\Acme.BookStore.csproj|d:\\new folder\\acme.bookstore\\acme.bookstore\\services\\dtos\\bookcreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E19BC05-F78C-4907-A059-C29A4859ADB4}|Acme.BookStore\\Acme.BookStore.csproj|solutionrelative:acme.bookstore\\services\\dtos\\bookcreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "BookService.cs",
+              "DocumentMoniker": "D:\\New folder\\Acme.BookStore\\Acme.BookStore\\Services\\BookService.cs",
+              "RelativeDocumentMoniker": "Acme.BookStore\\Services\\BookService.cs",
+              "ToolTip": "D:\\New folder\\Acme.BookStore\\Acme.BookStore\\Services\\BookService.cs",
+              "RelativeToolTip": "Acme.BookStore\\Services\\BookService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-02T10:25:15.175Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.razor",
+              "DocumentMoniker": "D:\\New folder\\Acme.BookStore\\Acme.BookStore\\Components\\Pages\\Index.razor",
+              "RelativeDocumentMoniker": "Acme.BookStore\\Components\\Pages\\Index.razor",
+              "ToolTip": "D:\\New folder\\Acme.BookStore\\Acme.BookStore\\Components\\Pages\\Index.razor",
+              "RelativeToolTip": "Acme.BookStore\\Components\\Pages\\Index.razor",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-02T10:15:54.797Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Book.cs",
+              "DocumentMoniker": "D:\\New folder\\Acme.BookStore\\Acme.BookStore\\Entities\\Book.cs",
+              "RelativeDocumentMoniker": "Acme.BookStore\\Entities\\Book.cs",
+              "ToolTip": "D:\\New folder\\Acme.BookStore\\Acme.BookStore\\Entities\\Book.cs",
+              "RelativeToolTip": "Acme.BookStore\\Entities\\Book.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-02T09:25:38.496Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BookStoreAppService.cs",
+              "DocumentMoniker": "D:\\New folder\\Acme.BookStore\\Acme.BookStore\\Services\\BookStoreAppService.cs",
+              "RelativeDocumentMoniker": "Acme.BookStore\\Services\\BookStoreAppService.cs",
+              "ToolTip": "D:\\New folder\\Acme.BookStore\\Acme.BookStore\\Services\\BookStoreAppService.cs",
+              "RelativeToolTip": "Acme.BookStore\\Services\\BookStoreAppService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-02T09:13:23.573Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "BookViewDto.cs",
+              "DocumentMoniker": "D:\\New folder\\Acme.BookStore\\Acme.BookStore\\Services\\Dtos\\BookViewDto.cs",
+              "RelativeDocumentMoniker": "Acme.BookStore\\Services\\Dtos\\BookViewDto.cs",
+              "ToolTip": "D:\\New folder\\Acme.BookStore\\Acme.BookStore\\Services\\Dtos\\BookViewDto.cs",
+              "RelativeToolTip": "Acme.BookStore\\Services\\Dtos\\BookViewDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-02T09:13:06.525Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "BookUpdateDto.cs",
+              "DocumentMoniker": "D:\\New folder\\Acme.BookStore\\Acme.BookStore\\Services\\Dtos\\BookUpdateDto.cs",
+              "RelativeDocumentMoniker": "Acme.BookStore\\Services\\Dtos\\BookUpdateDto.cs",
+              "ToolTip": "D:\\New folder\\Acme.BookStore\\Acme.BookStore\\Services\\Dtos\\BookUpdateDto.cs",
+              "RelativeToolTip": "Acme.BookStore\\Services\\Dtos\\BookUpdateDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-02T09:13:04.668Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "BookCreateDto.cs",
+              "DocumentMoniker": "D:\\New folder\\Acme.BookStore\\Acme.BookStore\\Services\\Dtos\\BookCreateDto.cs",
+              "RelativeDocumentMoniker": "Acme.BookStore\\Services\\Dtos\\BookCreateDto.cs",
+              "ToolTip": "D:\\New folder\\Acme.BookStore\\Acme.BookStore\\Services\\Dtos\\BookCreateDto.cs",
+              "RelativeToolTip": "Acme.BookStore\\Services\\Dtos\\BookCreateDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAgAAAAXAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-02T09:13:03.243Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

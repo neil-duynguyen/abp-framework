@@ -1,0 +1,58 @@
+/* home.component.scss */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Màu nền tối với độ mờ */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000; /* Đảm bảo popup nằm trên tất cả các phần tử khác */
+  }
+  
+  .popup-content {
+    background: #fff; /* Màu nền trắng cho popup */
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 600px; /* Đặt kích thước tối đa cho popup */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Đổ bóng nhẹ cho popup */
+  }
+  
+  .popup-content h2 {
+    margin-top: 0;
+  }
+  
+  .popup-content .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .popup-content .btn {
+    margin-right: 10px;
+  }
+
+  .table .btn {
+    margin-right: 10px;
+  }
+
+  .btn-submit {
+    margin-right: 10px;
+  }
+
+/* CSS cho ngx-toastr */
+.toast-success {
+  background-color: #dff0d8 !important; /* Màu xanh lá nhạt */
+  color: #3c763d !important; /* Màu chữ xanh đậm */
+}
+
+.toast-error {
+  background-color: #f2dede !important; /* Màu đỏ nhạt */
+  color: #a94442 !important; /* Màu chữ đỏ đậm */
+}
+
+.toast-bottom-right {
+  bottom: 12px;
+  right: 12px;
+}

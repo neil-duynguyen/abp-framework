@@ -1,0 +1,105 @@
+<div class="container">
+  <div class="text-right mb-3">
+    <button class="btn btn-primary" (click)="toggleBookForm()">
+      {{ showForm ? 'Close Form' : 'New Book' }}
+    </button>
+  </div>
+
+  <!-- Form để thêm sách mới -->
+  <div *ngIf="showForm">
+    <h2>New Book Form</h2>
+    <form id="bookCreateForm" (ngSubmit)="onSubmit()" autocomplete="off">
+        <div class="form-group">
+            <label for="Book_Name">Name</label>
+            <input type="text" id="Book_Name" name="Book_Name" class="form-control" [(ngModel)]="newBook.name" required />
+        </div>
+
+        <div class="form-group">
+            <label for="Book_AuthorName">Author Name</label>
+            <input type="text" id="Book_AuthorName" name="Book_AuthorName" class="form-control" [(ngModel)]="newBook.authorName" required />
+        </div>
+
+        <div class="form-group">
+            <label for="Book_Price">Price</label>
+            <input type="number" id="Book_Price" name="Book_Price" class="form-control" [(ngModel)]="newBook.price" required />
+        </div>
+
+        <div class="form-group">
+            <label for="Book_PublishDate">Publish Date</label>
+            <input type="date" id="Book_PublishDate" name="Book_PublishDate" class="form-control" [(ngModel)]="newBook.publishDate" required />
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary btn-submit">Save</button>
+        <button type="button" class="btn btn-secondary" (click)="toggleBookForm()">Close</button>
+    </form>
+  </div>
+
+  <!-- Danh sách sách -->
+  <div>
+    <br>
+    <h2>List of Books</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Author Name</th>
+          <th>Price</th>
+          <th>Publish Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let book of books">
+          <td>{{ book.name }}</td>
+          <td>{{ book.authorName }}</td>
+          <td>{{ book.price }}</td>
+          <td>{{ book.publishDate | date:'mediumDate' }}</td>
+          <td>
+            <button class="btn btn-warning btn-sm" (click)="editBook(book)">
+              <i class="fa fa-pencil"></i>
+            </button>
+            <button class="btn btn-danger btn-sm" (click)="deleteBook(book.id)">
+              <i class="fa fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+        <tr *ngIf="books.length === 0">
+          <td colspan="5">No books found</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Popup Confirmation Dialog -->
+  <div *ngIf="showPopup" class="popup-overlay">
+    <div class="popup-content">
+      <h2>Edit Book</h2>
+      <form id="bookEditForm" (ngSubmit)="onSubmit()" autocomplete="off">
+        <div class="form-group">
+          <label for="Popup_Book_Name">Name</label>
+          <input type="text" id="Popup_Book_Name" name="Popup_Book_Name" class="form-control" [(ngModel)]="newBook.name" required />
+        </div>
+
+        <div class="form-group">
+          <label for="Popup_Book_AuthorName">Author Name</label>
+          <input type="text" id="Popup_Book_AuthorName" name="Popup_Book_AuthorName" class="form-control" [(ngModel)]="newBook.authorName" required />
+        </div>
+
+        <div class="form-group">
+          <label for="Popup_Book_Price">Price</label>
+          <input type="number" id="Popup_Book_Price" name="Popup_Book_Price" class="form-control" [(ngModel)]="newBook.price" required />
+        </div>
+
+        <div class="form-group">
+          <label for="Popup_Book_PublishDate">Publish Date</label>
+          <input type="date" id="Popup_Book_PublishDate" name="Popup_Book_PublishDate" class="form-control" [(ngModel)]="newBook.publishDate" required />
+        </div>
+
+        <button type="submit" class="btn btn-primary">{{ isEditMode ? 'Update' : 'Save' }}</button>
+        <button type="button" class="btn btn-secondary" (click)="closePopup()">Close</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
