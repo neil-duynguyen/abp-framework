@@ -112,7 +112,7 @@ namespace Acme.BookStore
 
 
 
-        public async Task SendNoti(string token)
+        public async Task SendNoti(string token, string title, string mess)
         {
             await InitializeFirebase();
 
@@ -122,8 +122,8 @@ namespace Acme.BookStore
             {
                 Notification = new Notification()
                 {
-                    Title = "Hello",
-                    Body = "World",
+                    Title = title,
+                    Body = mess,
                 },
                 Token = registrationToken,
             };

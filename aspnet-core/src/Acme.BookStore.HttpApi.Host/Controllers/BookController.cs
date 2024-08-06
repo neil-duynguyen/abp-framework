@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Volo.Abp.AspNetCore.Mvc;
 
@@ -43,9 +44,9 @@ namespace Acme.BookStore.Controllers
 
 
         [HttpPost("SendNoti")]
-        public async Task SendNoti(string token)
+        public async Task SendNoti(string token, string title, string mess)
         {
-            await _bookService.SendNoti(token);
+            await _bookService.SendNoti(token, title, mess);
         }
     }
 }

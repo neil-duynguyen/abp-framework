@@ -43,23 +43,26 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   initializeFirebase() {
-    this.firebaseService.getToken()
-      .then(token => {
-        // In ra token FCM
-        console.log('FCM Registration Token:', token);
-      })
-      .catch(err => {
-        // Xử lý lỗi nếu có
-        console.error('Error retrieving FCM token:', err);
-        this.toastr.error(err.message, 'Error', {
-          timeOut: 3000,
-          positionClass: 'toast-bottom-right',
-          progressBar: true
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/firebase-messaging-sw.js')
+        .then((registration) => {
+          console.log('Service Worker registered with scope:', registration.scope);
+          return this.firebaseService.getToken();
+        })
+        .then(token => {
+          console.log('FCM Registration Token:', token);
+        })
+        .catch(err => {
+          console.error('Error retrieving FCM token:', err);
+          this.toastr.error(err.message, 'Error', {
+            timeOut: 3000,
+            positionClass: 'toast-bottom-right',
+            progressBar: true
+          });
         });
-      });
 
-    // Lắng nghe thông báo khi ứng dụng đang mở
-    this.firebaseService.listenForMessages();
+      this.firebaseService.listenForMessages();
+    }
   }
   
   onSubmit() {
