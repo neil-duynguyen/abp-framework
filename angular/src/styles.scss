@@ -29,3 +29,24 @@
   }
 
 }
+
+.toast-top-right {
+  top: 50px !important;
+  right: 12px !important;
+}
+
+.toast-info {
+  background-color: #2bd231 !important;
+  color: white !important;
+  border-radius: 5px;
+}
+
+.toast-info .toast-title {
+  font-weight: bold;
+  color: white !important;
+}
+
+.toast-info .toast-message {
+  font-size: 16px;
+  color: white !important;
+}

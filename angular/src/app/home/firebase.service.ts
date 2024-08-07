@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { initializeApp } from 'firebase/app';
 import { getMessaging, getToken, onMessage } from 'firebase/messaging';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ import { getMessaging, getToken, onMessage } from 'firebase/messaging';
 export class FirebaseService {
   private messaging;
 
-  constructor() {
+  constructor(private toastr: ToastrService) {
     const firebaseConfig = {
       apiKey: "AIzaSyDqykB0pj4ZwhkaIgsjYfVOSN0ukDqt5Nk",
       authDomain: "testsendnoti-f5a2c.firebaseapp.com",
@@ -50,9 +51,14 @@ export class FirebaseService {
     }
   }
 
-  listenForMessages() {
-    onMessage(this.messaging, (payload) => {
-      console.log('Message received: ', payload);
-    });
-  }
+    listenForMessages() {
+      onMessage(this.messaging, (payload) => {
+        console.log('Message received: ', payload);
+        this.toastr.info(payload.notification.body, payload.notification.title, {
+          timeOut: 5000,
+          positionClass: 'toast-top-right'
+        });
+      });
+    }
+    
 }

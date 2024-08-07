@@ -30,6 +30,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.loadBooks();
     this.initializeFirebase();
+    this.firebaseService.listenForMessages();
   }
 
   loadBooks() {

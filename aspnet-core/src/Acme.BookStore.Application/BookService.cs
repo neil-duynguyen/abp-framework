@@ -21,13 +21,15 @@ namespace Acme.BookStore
     public class BookService : ApplicationService
     {
         private readonly IRepository<Book, Guid> _bookRepository;
+        private readonly SendNotificationsService _sendNotificationsService;
         private readonly IMapper _mapper;
 
 
-        public BookService(IRepository<Book, Guid> bookRepository, IMapper mapper)
+        public BookService(IRepository<Book, Guid> bookRepository, IMapper mapper, SendNotificationsService sendNotificationsService)
         {
             _bookRepository = bookRepository;
             _mapper = mapper;
+            _sendNotificationsService = sendNotificationsService;
         }
 
         public async Task<BookViewDto> CreateBook(string token, BookCreateDto bookCreateDto)
@@ -35,7 +37,7 @@ namespace Acme.BookStore
             var insert = await _bookRepository.InsertAsync(_mapper.Map<Book>(bookCreateDto));
 
             //send noti
-            SendNoti(token, "Create Book", "Create Book Successfully");
+            await _sendNotificationsService.SendNoti(token, "Create Book", "Create Book Successfully");
 
             return ObjectMapper.Map<Book, BookViewDto>(insert);
         }
@@ -50,14 +52,18 @@ namespace Acme.BookStore
             var book = _mapper.Map(bookUpdateDto, await _bookRepository.FindAsync(id));
 
             //send noti
-            SendNoti(token, "Update Book", "Update Book Successfully");
+            await _sendNotificationsService.SendNoti(token, "Update Book", "Update Book Successfully");     
 
             return _mapper.Map<BookViewDto>(await _bookRepository.UpdateAsync(book));
         }
 
-        public async Task DeleteBook(Guid id)
+        public async Task DeleteBook(string token, Guid id)
         {
             await _bookRepository.DeleteAsync(id);
+            //send noti
+            await _sendNotificationsService.SendNoti(token, "Delete Book", "Delete Book Successfully");
+
+            
         }
 
         public async Task ImportExcelBook(IFormFile formFile)
@@ -96,53 +102,6 @@ namespace Acme.BookStore
             }
         }
 
-        public async Task InitializeFirebase()
-        {
-            try
-            {
-                //để đường dẫn trong appsettings
-                string pathToServiceAccountKey = "C:\\Users\\DuyNguyen\\Downloads\\testsendnoti-f5a2c-firebase-adminsdk-oyuje-410bc0077a.json";
-
-                FirebaseApp.Create(new AppOptions()
-                {
-                    Credential = GoogleCredential.FromFile(pathToServiceAccountKey),
-                });
-
-                Console.WriteLine("Firebase initialized successfully.");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error initializing Firebase: " + ex.Message);
-            }
-        }
-
-
-
-        public async Task SendNoti(string token, string title, string mess)
-        {
-            await InitializeFirebase();
-
-            var registrationToken = token;
-
-            var message = new Message()
-            {
-                Notification = new Notification()
-                {
-                    Title = title,
-                    Body = mess,
-                },
-                Token = registrationToken,
-            };
-
-            try
-            {
-                string response = await FirebaseMessaging.DefaultInstance.SendAsync(message);
-                Console.WriteLine("Successfully sent message: " + response);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error sending message: " + ex.Message);
-            }
-        }
+        
     }
 }

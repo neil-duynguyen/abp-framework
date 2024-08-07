@@ -32,8 +32,8 @@ namespace Acme.BookStore.Controllers
         }
 
         [HttpDelete]
-        public async Task DeleteBook(Guid id) {
-            await _bookService.DeleteBook(id);
+        public async Task DeleteBook(string token, Guid id) {
+            await _bookService.DeleteBook(token, id);
         }
         
         [HttpPut]
@@ -43,10 +43,6 @@ namespace Acme.BookStore.Controllers
         }
 
 
-        [HttpPost("SendNoti")]
-        public async Task SendNoti(string token, string title, string mess)
-        {
-            await _bookService.SendNoti(token, title, mess);
-        }
+        
     }
 }
