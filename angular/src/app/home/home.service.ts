@@ -18,8 +18,8 @@ export class HomeService {
   }
 
   // Phương thức để gọi API tạo mới sách
-  createBook(newBook: any): Observable<any> {
-    const url = `${this.apiUrl}`;
+  createBook(token: string, newBook: any): Observable<any> {
+    const url = `${this.apiUrl}?token=${token}`;
     return this.http.post<any>(url, newBook);
   }
 
@@ -30,8 +30,8 @@ export class HomeService {
   }
 
   // Phương thức để gọi API xoá sách
-  deleteBook(bookId: string): Observable<any> {
-    const url = `${this.apiUrl}/?id=${bookId}`;
+  deleteBook(token: string, bookId: string): Observable<any> {
+    const url = `${this.apiUrl}?token=${token}&?id=${bookId}`;
     return this.http.delete<any>(url);
   }
 }

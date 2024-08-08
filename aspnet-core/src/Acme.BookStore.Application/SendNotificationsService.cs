@@ -17,7 +17,13 @@ namespace Acme.BookStore
     {
         private FirebaseClient _firebaseClient;
         private readonly string Timestamp = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, TimeZoneInfo.FindSystemTimeZoneById("SE Asia Standard Time")).ToString();
-        public async Task InitializeFirebase()
+
+        public SendNotificationsService()
+        {
+            _firebaseClient = new FirebaseClient("https://testsendnoti-f5a2c-default-rtdb.asia-southeast1.firebasedatabase.app/");
+        }
+
+        private async Task InitializeFirebase()
         {
             try
             {
@@ -29,7 +35,7 @@ namespace Acme.BookStore
                     Credential = GoogleCredential.FromFile(pathToServiceAccountKey),
                 });
 
-                _firebaseClient = new FirebaseClient("https://testsendnoti-f5a2c-default-rtdb.asia-southeast1.firebasedatabase.app/");
+               // _firebaseClient = new FirebaseClient("https://testsendnoti-f5a2c-default-rtdb.asia-southeast1.firebasedatabase.app/");
 
                 Console.WriteLine("Firebase initialized successfully.");
             }
@@ -84,6 +90,7 @@ namespace Acme.BookStore
 
             try
             {
+                //_firebaseClient = new FirebaseClient("https://testsendnoti-f5a2c-default-rtdb.asia-southeast1.firebasedatabase.app/");
                 // Save the notification to the database
                 await _firebaseClient
                     .Child("notifications")

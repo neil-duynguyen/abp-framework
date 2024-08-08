@@ -79,7 +79,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   createBook() {
     console.log('Form submitted with:', this.newBook);
     this.subscription.add(
-      this.homeService.createBook(this.newBook).subscribe(
+      this.homeService.createBook(this.fmctoken, this.newBook).subscribe(
         (response) => {
           console.log('Book created successfully:', response);
           this.books.push(response);
@@ -114,7 +114,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   deleteBook(bookId: string) {
     this.subscription.add(
-      this.homeService.deleteBook(bookId).subscribe(
+      this.homeService.deleteBook(this.fmctoken, bookId).subscribe(
         () => {
           this.books = this.books.filter(b => b.id !== bookId);
         },

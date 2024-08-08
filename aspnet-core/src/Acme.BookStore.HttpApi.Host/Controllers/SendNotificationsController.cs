@@ -16,11 +16,11 @@ namespace Acme.BookStore.Controllers
             _sendNotificationsService = sendNotificationsService;
         }
 
-        [HttpPost("SendNoti")]
+       /* [HttpPost("SendNoti")]
         public async Task SendNoti(string token, string title, string mess)
         {
             await _sendNotificationsService.SendNoti(token, title, mess);
-        }
+        }*/
 
         [HttpPut("UpdateStatus")]
         public async Task UpdateStatus(string notificationId, string status) {
