@@ -32,12 +32,12 @@ namespace Acme.BookStore
             _sendNotificationsService = sendNotificationsService;
         }
 
-        public async Task<BookViewDto> CreateBook(string token, BookCreateDto bookCreateDto)
+        public async Task<BookViewDto> CreateBook(string token, string deviceId, BookCreateDto bookCreateDto)
         {
             var insert = await _bookRepository.InsertAsync(_mapper.Map<Book>(bookCreateDto));
 
             //send noti
-            await _sendNotificationsService.SendNoti(token, "Create Book", "Create Book Successfully");
+            await _sendNotificationsService.SendNoti(token, deviceId, "Create Book", "Create Book Successfully");
 
             return ObjectMapper.Map<Book, BookViewDto>(insert);
         }
@@ -47,21 +47,21 @@ namespace Acme.BookStore
             return ObjectMapper.Map<List<Book>, List<BookViewDto>>(await _bookRepository.GetListAsync());
         }
 
-        public async Task<BookViewDto> UpdateBook(string token, Guid id, BookUpdateDto bookUpdateDto)
+        public async Task<BookViewDto> UpdateBook(string token, string deviceId, Guid id, BookUpdateDto bookUpdateDto)
         {
             var book = _mapper.Map(bookUpdateDto, await _bookRepository.FindAsync(id));
 
             //send noti
-            await _sendNotificationsService.SendNoti(token, "Update Book", "Update Book Successfully");     
+            await _sendNotificationsService.SendNoti(token, deviceId, "Update Book", "Update Book Successfully");     
 
             return _mapper.Map<BookViewDto>(await _bookRepository.UpdateAsync(book));
         }
 
-        public async Task DeleteBook(string token, Guid id)
+        public async Task DeleteBook(string token, string deviceId, Guid id)
         {
             await _bookRepository.DeleteAsync(id);
             //send noti
-            await _sendNotificationsService.SendNoti(token, "Delete Book", "Delete Book Successfully");
+            await _sendNotificationsService.SendNoti(token, deviceId, "Delete Book", "Delete Book Successfully");
 
             
         }

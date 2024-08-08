@@ -18,20 +18,20 @@ export class HomeService {
   }
 
   // Phương thức để gọi API tạo mới sách
-  createBook(token: string, newBook: any): Observable<any> {
-    const url = `${this.apiUrl}?token=${token}`;
+  createBook(token: string, deviceId:string, newBook: any): Observable<any> {
+    const url = `${this.apiUrl}/${token}/${deviceId}`;
     return this.http.post<any>(url, newBook);
   }
 
   // Phương thức để gọi API cập nhật thông tin sách
-  updateBook(token: string, bookId: string, updatedBook: any): Observable<any> {
-    const url = `${this.apiUrl}/?token=${token}&id=${bookId}`;
+  updateBook(token: string, deviceId: string, bookId: string, updatedBook: any): Observable<any> {
+    const url = `${this.apiUrl}/${token}/${deviceId}/${bookId}`;
     return this.http.put<any>(url, updatedBook);
   }
 
   // Phương thức để gọi API xoá sách
-  deleteBook(token: string, bookId: string): Observable<any> {
-    const url = `${this.apiUrl}?token=${token}&?id=${bookId}`;
+  deleteBook(token: string, deviceId:string, bookId: string): Observable<any> {
+    const url = `${this.apiUrl}/${token}/${deviceId}/${bookId}`;
     return this.http.delete<any>(url);
   }
 }

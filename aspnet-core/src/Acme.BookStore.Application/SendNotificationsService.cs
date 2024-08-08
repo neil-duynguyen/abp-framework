@@ -46,7 +46,7 @@ namespace Acme.BookStore
         }
 
 
-        public async Task SendNoti(string token, string title, string mess)
+        public async Task SendNoti(string token, string deviceId, string title, string mess)
         {
             await InitializeFirebase();
 
@@ -67,7 +67,7 @@ namespace Acme.BookStore
                 string response = await FirebaseMessaging.DefaultInstance.SendAsync(message);
                 Console.WriteLine("Successfully sent message: " + response);
 
-                await SaveNotificationAsync(token, title, mess);
+                await SaveNotificationAsync(token, deviceId, title, mess);
             }
             catch (Exception ex)
             {
@@ -75,11 +75,12 @@ namespace Acme.BookStore
             }
         }
 
-        private async Task SaveNotificationAsync(string token, string title, string mess)
+        private async Task SaveNotificationAsync(string token, string deviceId, string title, string mess)
         {
             var notification = new
             {
                 Token = token,
+                deviceId = deviceId,
                 Title = title,
                 Message = mess,
                 Status = "unread",

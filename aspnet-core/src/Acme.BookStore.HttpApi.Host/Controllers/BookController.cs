@@ -1,4 +1,5 @@
 ﻿using Acme.BookStore.Dto;
+using DeviceDetectorNET.Parser.Device;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -20,9 +21,9 @@ namespace Acme.BookStore.Controllers
         }
 
         
-        [HttpPost]
-        public async Task<BookViewDto> CreateBook (string token, [FromBody]BookCreateDto bookCreateDto) {
-            return await _bookService.CreateBook(token, bookCreateDto);
+        [HttpPost("{token}/{deviceId}")]
+        public async Task<BookViewDto> CreateBook (string token, string deviceId, [FromBody]BookCreateDto bookCreateDto) {
+            return await _bookService.CreateBook(token, deviceId, bookCreateDto);
         }
 
         [AllowAnonymous]
@@ -31,15 +32,15 @@ namespace Acme.BookStore.Controllers
             return await _bookService.GetListBook();
         }
 
-        [HttpDelete]
-        public async Task DeleteBook(string token, Guid id) {
-            await _bookService.DeleteBook(token, id);
+        [HttpDelete("{token}/{deviceId}/{id}")]
+        public async Task DeleteBook(string token, string deviceId, Guid id) {
+            await _bookService.DeleteBook(token, deviceId, id);
         }
         
-        [HttpPut]
-        public async Task<BookViewDto> UpdateBook(string token, Guid id, BookUpdateDto bookUpdateDto)
+        [HttpPut("{token}/{deviceId}/{id}")]
+        public async Task<BookViewDto> UpdateBook(string token, string deviceId, Guid id, BookUpdateDto bookUpdateDto)
         {
-            return await _bookService.UpdateBook(token, id, bookUpdateDto);
+            return await _bookService.UpdateBook(token, deviceId, id, bookUpdateDto);
         }
 
 

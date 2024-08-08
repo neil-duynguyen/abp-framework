@@ -3,6 +3,8 @@ import { Subscription } from 'rxjs';
 import { HomeService } from './home.service';
 import { ToastrService } from 'ngx-toastr';
 import { FirebaseService } from './firebase.service';
+import { Config } from '../config';
+import { FRLogger } from '../config';
 
 @Component({
   selector: 'app-home',
@@ -31,6 +33,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.loadBooks();
     this.initializeFirebase();
     this.firebaseService.listenForMessages();
+    this.getIdentifier();
   }
 
   loadBooks() {
@@ -79,7 +82,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   createBook() {
     console.log('Form submitted with:', this.newBook);
     this.subscription.add(
-      this.homeService.createBook(this.fmctoken, this.newBook).subscribe(
+      this.homeService.createBook(this.fmctoken, this.getIdentifier(),this.newBook).subscribe(
         (response) => {
           console.log('Book created successfully:', response);
           this.books.push(response);
@@ -100,7 +103,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       publishDate: new Date(this.newBook.publishDate).toISOString()
     };
     this.subscription.add(
-      this.homeService.updateBook(this.fmctoken, this.newBook.id, updatedBook).subscribe(
+      this.homeService.updateBook(this.fmctoken,this.getIdentifier(), this.newBook.id, updatedBook).subscribe(
         (response) => {
           console.log('Book updated successfully:', response);
           this.loadBooks();
@@ -114,7 +117,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   deleteBook(bookId: string) {
     this.subscription.add(
-      this.homeService.deleteBook(this.fmctoken, bookId).subscribe(
+      this.homeService.deleteBook(this.fmctoken,this.getIdentifier(), bookId).subscribe(
         () => {
           this.books = this.books.filter(b => b.id !== bookId);
         },
@@ -187,4 +190,27 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.subscription.unsubscribe(); // Hủy đăng ký subscription để tránh rò rỉ bộ nhớ
   }
+
+  //get id device
+  getIdentifier(): string {
+    const storageKey = `${Config.get().prefix}-DeviceID`;
+
+    if (!(typeof globalThis.crypto !== 'undefined' && globalThis.crypto.getRandomValues)) {
+      FRLogger.warn('Cannot generate profile ID. Crypto and/or getRandomValues is not supported.');
+      return '';
+    }
+    if (!localStorage) {
+      FRLogger.warn('Cannot store profile ID. localStorage is not supported.');
+      return '';
+    }
+    let id = localStorage.getItem(storageKey);
+    if (!id) {
+      // generate ID, 3 sections of random numbers: "714524572-2799534390-3707617532"
+      id = globalThis.crypto.getRandomValues(new Uint32Array(3)).join('-');
+      localStorage.setItem(storageKey, id);
+    }
+    console.log("DeviceId: ", id);
+    return id;
+  }
+
 }
