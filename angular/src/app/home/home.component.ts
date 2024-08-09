@@ -191,10 +191,11 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe(); // Hủy đăng ký subscription để tránh rò rỉ bộ nhớ
   }
 
-  //get id device
+  //get id device từ localStorage
   getIdentifier(): string {
     const storageKey = `${Config.get().prefix}-DeviceID`;
 
+    //Nếu chưa có Key thì tạo ra 1 key mới và lưu trữ trong localStorage
     if (!(typeof globalThis.crypto !== 'undefined' && globalThis.crypto.getRandomValues)) {
       FRLogger.warn('Cannot generate profile ID. Crypto and/or getRandomValues is not supported.');
       return '';
