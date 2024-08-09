@@ -22,7 +22,7 @@ namespace Acme.BookStore.Controllers
             await _sendNotificationsService.SendNoti(token, title, mess);
         }*/
 
-        [HttpPut("UpdateStatus")]
+        [HttpPut("UpdateStatus/{notificationId}/{status}")]
         public async Task UpdateStatus(string notificationId, string status) {
             Console.WriteLine("Update ne");
             await _sendNotificationsService.UpdateNotificationStatusAsync(notificationId, status);
