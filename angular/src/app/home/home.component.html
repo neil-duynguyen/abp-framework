@@ -3,6 +3,11 @@
     <button class="btn btn-primary" (click)="toggleBookForm()">
       {{ showForm ? 'Close Form' : 'New Book' }}
     </button>
+    <div class="col-md-6 offset-md-3">
+      <input type="file" id="fileInput" (change)="onFileSelected($event)" style="display: none;">
+      <button class="btn btn-secondary" (click)="importBooks()">Import books from excel</button>
+    </div>
+    <button class="btn btn-secondary" (click)="exportBooks()">Export books to excel</button>
   </div>
 
   <!-- Form để thêm sách mới -->

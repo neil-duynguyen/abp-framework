@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   isEditMode = false;
   showForm = false;
   showPopup = false; // Hiển thị popup
+  selectedFile: File | null = null;
 
   private subscription: Subscription = new Subscription();
   private fmctoken: string = null;
@@ -190,6 +191,34 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.subscription.unsubscribe(); // Hủy đăng ký subscription để tránh rò rỉ bộ nhớ
   }
+
+  importBooks(): void {
+    const fileInput = document.getElementById('fileInput') as HTMLInputElement;
+    fileInput.click();
+  }
+
+  onFileSelected(event: any): void {
+    const file: File = event.target.files[0];
+    this.selectedFile = file;
+
+    if (this.selectedFile) {
+      this.homeService.importBookExcel(this.selectedFile).subscribe(
+        response => {
+          console.log('Books imported successfully:', response);
+          alert('Books imported successfully.');
+        },
+        error => {
+          console.error('Error importing books:', error);
+          alert('Error importing books.');
+        }
+      );
+    } else {
+      console.warn('No file selected!');
+      alert('Please select a file to upload.');
+    }
+  }
+
+  exportBooks(){}
 
   //get id device từ localStorage
   getIdentifier(): string {
