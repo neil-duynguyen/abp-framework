@@ -23,7 +23,8 @@ namespace Acme.BookStore
             _firebaseClient = new FirebaseClient("https://testsendnoti-f5a2c-default-rtdb.asia-southeast1.firebasedatabase.app/");
         }
 
-        private async Task InitializeFirebase()
+        //khởi tạo kết nối đến firebase
+        private void InitializeFirebase()
         {
             try
             {
@@ -35,7 +36,7 @@ namespace Acme.BookStore
                     Credential = GoogleCredential.FromFile(pathToServiceAccountKey),
                 });
 
-               // _firebaseClient = new FirebaseClient("https://testsendnoti-f5a2c-default-rtdb.asia-southeast1.firebasedatabase.app/");
+                // _firebaseClient = new FirebaseClient("https://testsendnoti-f5a2c-default-rtdb.asia-southeast1.firebasedatabase.app/");
 
                 Console.WriteLine("Firebase initialized successfully.");
             }
@@ -48,7 +49,7 @@ namespace Acme.BookStore
 
         public async Task SendNoti(string token, string deviceId, string title, string mess)
         {
-            await InitializeFirebase();
+            InitializeFirebase();
 
             var registrationToken = token;
 

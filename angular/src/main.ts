@@ -20,6 +20,18 @@ if (environment.production || environment.local) {  // thêm điều kiện cho 
   }
 }
 
+if (environment.production || environment.local) {  // thêm điều kiện cho local
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/firebase-messaging-sw2.js')
+      .then((registration) => {
+        console.log('Service Worker registered user 2 with scope:', registration.scope);
+      })
+      .catch((error) => {
+        console.error('Service Worker registration user 2 failed:', error);
+      });
+  }
+}
+
 platformBrowserDynamic()
   .bootstrapModule(AppModule)
   .catch(err => console.error(err));

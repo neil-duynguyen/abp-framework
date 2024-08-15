@@ -70,8 +70,28 @@ export class HomeComponent implements OnInit, OnDestroy {
 
       this.firebaseService.listenForMessages();
     }
+
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/firebase-messaging-sw.js')
+        .then((registration) => {
+          console.log('Service Worker registered with scope:', registration.scope);
+          return this.firebaseService.getToken2(); 
+        })
+        .then(token => {
+          console.log('FCM Registration Token:', token);
+          this.fmctoken = token;
+        })
+        .catch(err => {
+          console.error('Error retrieving FCM token:', err);
+          this.toastr.error(err.message, 'Error', {
+            timeOut: 3000,
+            positionClass: 'toast-bottom-right',
+            progressBar: true
+          });
+        });
+    }
   }
-  
+
   onSubmit() {
     if (this.isEditMode) {
       this.updateBook();

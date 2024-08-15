@@ -23,6 +23,7 @@ namespace Acme.BookStore
             CreateMap<BookCreateDto, Book>().ReverseMap();
             CreateMap<BookViewDto, Book>().ReverseMap();
             CreateMap<BookUpdateDto, Book>().ReverseMap();
+            CreateMap<BookViewDto, ElasticsearchDto>().ReverseMap();
 
             CreateMap<ColorViewDto, Color>().ReverseMap();
             CreateMap<VehicleModelStyleDto, VehicleModelStyle>().ReverseMap();

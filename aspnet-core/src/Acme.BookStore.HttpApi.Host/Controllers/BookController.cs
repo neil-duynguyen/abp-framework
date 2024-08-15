@@ -33,6 +33,13 @@ namespace Acme.BookStore.Controllers
             return await _bookService.GetListBook();
         }
 
+        [AllowAnonymous]
+        [HttpGet("BooksElasticsearch")]
+        public async Task<IActionResult> GetListBookElastic()
+        {  
+            return Ok(await _bookService.GetListBookElastic());
+        }
+
         [HttpDelete("{token}/{deviceId}/{id}")]
         public async Task DeleteBook(string token, string deviceId, Guid id) {
             await _bookService.DeleteBook(token, deviceId, id);
