@@ -30,7 +30,7 @@ namespace Acme.BookStore
         }
 
         public string GenerateOtpCode() {
-            int otp = new Random().Next(0, 9);
+            int otp = new Random().Next(100000, 999999);
             return otp.ToString("D6");
         }
 

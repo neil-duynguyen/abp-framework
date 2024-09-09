@@ -35,10 +35,10 @@ namespace Acme.BookStore.Controllers
             bool isVaild = await _loginOTPService.VerifyOtpAsync(email, otpCode);
             if (isVaild)
             {
-                return Ok("OTP đã được xác thực thành công");
+                return Ok("OTP đã được xác thực thành công.");
             }
             else {
-                return BadRequest("OTP không hợp lệ hoặc đã hết hạn");
+                return BadRequest("OTP không hợp lệ hoặc đã hết hạn.");
             }
         }
     }
