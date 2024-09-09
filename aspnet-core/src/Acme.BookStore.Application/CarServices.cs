@@ -1,4 +1,4 @@
-﻿using Acme.BookStore.CarDto;
+﻿/*using Acme.BookStore.CarDto;
 using AutoMapper;
 using CsvHelper;
 using CsvHelper.Configuration;
@@ -63,12 +63,12 @@ namespace Acme.BookStore
         
         public async Task<Guid> CreateVehicleBrand(VehicleBrandDto vehicleBrandDto)
         {
-            /* var existingBrand = await _vehicleBrandRepository.FindAsync(h => h.Name.Equals(vehicleBrandDto.Name));
+            *//* var existingBrand = await _vehicleBrandRepository.FindAsync(h => h.Name.Equals(vehicleBrandDto.Name));
 
              if (existingBrand != null)
              {
                  return existingBrand.Id;
-             }*/
+             }*//*
 
             var vehicleBrand = _mapper.Map<VehicleBrand>(vehicleBrandDto);
             
@@ -160,7 +160,7 @@ namespace Acme.BookStore
                         var idVehicleBrand = await CreateVehicleBrand(new VehicleBrandDto() { Name = dataVehicle.NameBrand, Description = dataVehicle.DescriptionBand });
 
                         //Create VehicleModel
-                       /* var idVehicleModel = await CreateVehicleModel(new VehicleModelDto() { Name = dataVehicle.NameModel, Description = dataVehicle.DescriptionModel, VehicleBrandId = idVehicleBrand });
+                       *//* var idVehicleModel = await CreateVehicleModel(new VehicleModelDto() { Name = dataVehicle.NameModel, Description = dataVehicle.DescriptionModel, VehicleBrandId = idVehicleBrand });
 
                         //Create VehicleYearModel
                        // await CreateVehicleYearModel(new VehicleYearModelDto() { Year = dataVehicle.Year, VehicleModelId = idVehicleModel });
@@ -172,7 +172,7 @@ namespace Acme.BookStore
                         await CreateVehicleEngine(new VehicleEngineDto() { Description = dataVehicle.DescriptionEngine, VehicleBrandId = idVehicleBrand });
 
                         //Create CreateVehicleModelStyle
-                        await CreateVehicleModelStyle(new VehicleModelStyleDto() { Name = dataVehicle.NameVersion, Description = dataVehicle.DetailURL, TechnicalFeature = dataVehicle.TechnicalFeature = JsonConvert.SerializeObject(technicalFeatures) });*/
+                        await CreateVehicleModelStyle(new VehicleModelStyleDto() { Name = dataVehicle.NameVersion, Description = dataVehicle.DetailURL, TechnicalFeature = dataVehicle.TechnicalFeature = JsonConvert.SerializeObject(technicalFeatures) });*//*
 
 
                     }
@@ -189,4 +189,4 @@ namespace Acme.BookStore
         }
 
     }
-}
+}*/
